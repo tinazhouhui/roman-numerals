@@ -7,7 +7,11 @@ describe('Roman numeral', () => {
     expect(convert(5)).toBe('V');
   })
 
-  test('should return II for 2', () => {
+  test('should return M for 1000', () => {
     expect(convert(1000)).toBe('M');
+  })
+
+  test('should return MMM for 3000', () => {
+    expect(convert(3000)).toBe('MMM');
   })
 })
