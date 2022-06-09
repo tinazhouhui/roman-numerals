@@ -7,16 +7,14 @@ export function convert(amount) {
   const thousands = Math.floor(amount / 1000)
   const hundreds = amount % 1000
   const tens = amount % 100
+  const ones = amount % 10
 
   let thousandsString = thousandsToString(thousands)
   let hundredsString = sectionToString(hundreds, 100, "C", "D", "M");
   let tensString = sectionToString(tens, 10, "X", "L", "C");
+  let onesString = sectionToString(ones, 1, "I", "V", "X");
 
-  if (amount === 5) {
-    return 'V'
-  }
-
-  return thousandsString + hundredsString + tensString
+  return thousandsString + hundredsString + tensString + onesString;
 }
 
 function thousandsToString(numberOfThousands) {
