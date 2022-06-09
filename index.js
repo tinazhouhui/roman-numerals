@@ -6,24 +6,29 @@ export function convert(amount) {
 
   const thousands = Math.floor(amount / 1000)
   const hundreds = amount % 1000
+  const tens = amount % 100
+  console.log(tens)
 
   let thousandsString = thousandsToString(thousands)
-  let hundredsString = sectionToString(hundreds, "C", "D", "M");
+  let hundredsString = sectionToString(hundreds, 100, "C", "D", "M");
+  let tensString = sectionToString(tens, 10, "X", "L", "C");
 
   if (amount === 5) {
     return 'V'
   }
 
-  return thousandsString + hundredsString
+  return thousandsString + hundredsString + tensString
 }
 
 function thousandsToString(numberOfThousands) {
   return 'M'.repeat(numberOfThousands);
 }
 
-function sectionToString(sectionAmount, low,mid,high){
-  let numberOfLow = Math.floor(sectionAmount / 100)
+function sectionToString(sectionAmount, divider, low,mid,high){
+  console.log(sectionAmount / divider)
+  let numberOfLow = Math.floor(sectionAmount / divider)
   let numberOfMid = 0;
+  console.log(numberOfLow)
 
   if(numberOfLow === 4){
     return low+mid;
