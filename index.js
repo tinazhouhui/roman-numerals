@@ -8,7 +8,7 @@ export function convert(amount) {
   const hundreds = amount % 1000
 
   let thousandsString = thousandsToString(thousands)
-  let hundredsString = hundredsToString(hundreds);
+  let hundredsString = sectionToString(hundreds, "C", "D", "M");
 
   if (amount === 5) {
     return 'V'
@@ -21,21 +21,21 @@ function thousandsToString(numberOfThousands) {
   return 'M'.repeat(numberOfThousands);
 }
 
-function hundredsToString(numberOfHundreds){
-  let numberOfC = Math.floor(numberOfHundreds / 100)
-  let numberOfD = 0;
+function sectionToString(sectionAmount, low,mid,high){
+  let numberOfLow = Math.floor(sectionAmount / 100)
+  let numberOfMid = 0;
 
-  if(numberOfC === 4){
-    return "CD";
+  if(numberOfLow === 4){
+    return low+mid;
   }
-  if(numberOfC === 9){
-    return "CM";
-  }
-
-  if (numberOfC >= 5) {
-    numberOfD = numberOfC / 5
-    numberOfC = numberOfC % 5
+  if(numberOfLow === 9){
+    return low+high;
   }
 
-  return 'D'.repeat(numberOfD) + 'C'.repeat(numberOfC);
+  if (numberOfLow >= 5) {
+    numberOfMid = numberOfLow / 5
+    numberOfLow = numberOfLow % 5
+  }
+
+  return mid.repeat(numberOfMid) + low.repeat(numberOfLow);
 }

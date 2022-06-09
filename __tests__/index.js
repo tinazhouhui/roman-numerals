@@ -30,4 +30,8 @@ describe('Roman numeral', () => {
   test('should return correctly for 3900', () => {
     expect(convert(3900)).toBe('MMMCM');
   })
+
+  // test('should return correctly for 10', () => {
+  //   expect(convert(10)).toBe('X');
+  // })
 })
