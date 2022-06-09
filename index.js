@@ -4,19 +4,21 @@
  */
 export function convert(amount) {
 
-  let finalString = ''
-  const numberOfM = Math.floor(amount / 1000)
+  const thousands = Math.floor(amount / 1000)
   const hundreds = amount % 1000
 
+  let thousandsString = thousandsToString(thousands)
   let hundredsString = hundredsToString(hundreds);
 
   if (amount === 5) {
     return 'V'
   }
 
-  finalString = 'M'.repeat(numberOfM) + hundredsString;
+  return thousandsString + hundredsString
+}
 
-  return finalString
+function thousandsToString(numberOfThousands) {
+  return 'M'.repeat(numberOfThousands);
 }
 
 function hundredsToString(numberOfHundreds){
