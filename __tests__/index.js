@@ -26,4 +26,8 @@ describe('Roman numeral', () => {
   test('should return correctly for 3400', () => {
     expect(convert(3400)).toBe('MMMCD');
   })
+
+  test('should return correctly for 3900', () => {
+    expect(convert(3900)).toBe('MMMCM');
+  })
 })

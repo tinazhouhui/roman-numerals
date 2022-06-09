@@ -25,13 +25,16 @@ function hundredsToString(numberOfHundreds){
   let numberOfC = Math.floor(numberOfHundreds / 100)
   let numberOfD = 0;
 
+  if(numberOfC === 4){
+    return "CD";
+  }
+  if(numberOfC === 9){
+    return "CM";
+  }
+
   if (numberOfC >= 5) {
     numberOfD = numberOfC / 5
     numberOfC = numberOfC % 5
-  }
-
-  if(numberOfC === 4){
-    return "CD";
   }
 
   return 'D'.repeat(numberOfD) + 'C'.repeat(numberOfC);
