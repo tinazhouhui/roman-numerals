@@ -7,7 +7,6 @@ export function convert(amount) {
   const thousands = Math.floor(amount / 1000)
   const hundreds = amount % 1000
   const tens = amount % 100
-  console.log(tens)
 
   let thousandsString = thousandsToString(thousands)
   let hundredsString = sectionToString(hundreds, 100, "C", "D", "M");
@@ -25,10 +24,8 @@ function thousandsToString(numberOfThousands) {
 }
 
 function sectionToString(sectionAmount, divider, low,mid,high){
-  console.log(sectionAmount / divider)
   let numberOfLow = Math.floor(sectionAmount / divider)
   let numberOfMid = 0;
-  console.log(numberOfLow)
 
   if(numberOfLow === 4){
     return low+mid;
