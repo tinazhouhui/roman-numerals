@@ -8,7 +8,19 @@ export function convert(amount) {
   const numberOfM = Math.floor(amount / 1000)
   const hundreds = amount % 1000
 
-  let numberOfC = Math.floor(hundreds / 100)
+  let hundredsString = hundredsToString(hundreds);
+
+  if (amount === 5) {
+    return 'V'
+  }
+
+  finalString = 'M'.repeat(numberOfM) + hundredsString;
+
+  return finalString
+}
+
+function hundredsToString(numberOfHundreds){
+  let numberOfC = Math.floor(numberOfHundreds / 100)
   let numberOfD = 0;
 
   if (numberOfC >= 5) {
@@ -16,11 +28,9 @@ export function convert(amount) {
     numberOfC = numberOfC % 5
   }
 
-  if (amount === 5) {
-    return 'V'
+  if(numberOfC === 4){
+    return "CD";
   }
 
-  finalString = 'M'.repeat(numberOfM) + 'D'.repeat(numberOfD) + 'C'.repeat(numberOfC)
-
-  return finalString
+  return 'D'.repeat(numberOfD) + 'C'.repeat(numberOfC);
 }
